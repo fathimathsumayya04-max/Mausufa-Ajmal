@@ -8,7 +8,7 @@ interface BookOpeningExperienceProps {
   onEnter: () => void;
 }
 
-type Stage = 'closed' | 'unsealing' | 'emerging' | 'unfolding' | 'revealed';
+type Stage = 'closed' | 'unsealing' | 'emerging' | 'centered' | 'unfolding' | 'revealed';
 
 export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ onEnter }) => {
   const [stage, setStage] = useState<Stage>('closed');
@@ -35,24 +35,30 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
     // Start playing the uploaded wedding Nasheed smoothly strictly on direct user click!
     weddingAudio.startFromTapToOpen();
 
+    // Step 1: Envelope flap opens 180° in 3D
     setStage('unsealing');
 
-    // Step 2: Flap opened, folded card emerges and slides up
+    // Step 2: Folded card emerges and slides out of pocket
     const timer1 = window.setTimeout(() => {
       setStage('emerging');
-    }, 1000);
+    }, 1100);
 
-    // Step 3: Card pops forward and unfolds into two-page spread
+    // Step 3: Card centers and scales up gracefully — full card reveal
     const timer2 = window.setTimeout(() => {
-      setStage('unfolding');
-    }, 2100);
+      setStage('centered');
+    }, 2200);
 
-    // Step 4: Fully revealed with action controls
+    // Step 4: Card unfolds into two-page spread
     const timer3 = window.setTimeout(() => {
-      setStage('revealed');
+      setStage('unfolding');
     }, 3400);
 
-    timeoutsRef.current.push(timer1, timer2, timer3);
+    // Step 5: Fully revealed with celebration controls
+    const timer4 = window.setTimeout(() => {
+      setStage('revealed');
+    }, 4600);
+
+    timeoutsRef.current.push(timer1, timer2, timer3, timer4);
   }, [stage, clearAllTimeouts]);
 
   // Skip animation to immediately view the unfolded invitation
@@ -349,12 +355,16 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
           </button>
         )}
 
-        {/* Stages 1 & 2: Status Text & Progress Cue */}
-        {(stage === 'unsealing' || stage === 'emerging') && (
+        {/* Stages 1, 2 & 3: Status Text & Progress Cue */}
+        {(stage === 'unsealing' || stage === 'emerging' || stage === 'centered') && (
           <div className="opening-status-bar">
             <span className="status-pulse-dot" />
             <span className="status-text">
-              {stage === 'unsealing' ? 'Unsealing your invitation...' : 'Revealing your invitation...'}
+              {stage === 'unsealing'
+                ? 'Unsealing your invitation...'
+                : stage === 'emerging'
+                ? 'Opening your invitation...'
+                : 'Revealing your invitation...'}
             </span>
           </div>
         )}

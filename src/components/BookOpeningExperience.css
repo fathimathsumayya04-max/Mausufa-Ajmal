@@ -178,13 +178,38 @@
   cursor: default;
 }
 
-/* Envelope gently fades and recedes when the 2-page card unfolds into view */
+/* Envelope behavior across stages — the envelope container NEVER has opacity: 0
+   so the child card unit remains 100% visible throughout all stages */
+.opening-experience.emerging .invitation-envelope,
+.opening-experience.centered .invitation-envelope {
+  transform: translateY(28px);
+}
+
 .opening-experience.unfolding .invitation-envelope,
 .opening-experience.revealed .invitation-envelope {
+  transform: translateY(0);
+  pointer-events: none;
+}
+
+/* Envelope parts soften during centered stage, and cleanly fade out in unfolding & revealed */
+.opening-experience.centered .envelope-pocket,
+.opening-experience.centered .envelope-top-flap,
+.opening-experience.centered .envelope-back-wall {
+  opacity: 0.28;
+  filter: blur(1px);
+  transition: opacity 0.8s ease, filter 0.8s ease;
+}
+
+.opening-experience.unfolding .envelope-pocket,
+.opening-experience.revealed .envelope-pocket,
+.opening-experience.unfolding .envelope-top-flap,
+.opening-experience.revealed .envelope-top-flap,
+.opening-experience.unfolding .envelope-back-wall,
+.opening-experience.revealed .envelope-back-wall {
   opacity: 0;
-  transform: scale(0.9) translateY(12px);
   filter: blur(2px);
   pointer-events: none;
+  transition: opacity 0.6s ease, filter 0.6s ease;
 }
 
 /* 1. Envelope Back Wall & Interior Gold Cavity */
@@ -380,46 +405,50 @@
   bottom: 14px;
   z-index: 3;
   transform: translateY(0);
-  transition: transform 1.35s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.01s 1.2s;
+  transition: transform 1.1s cubic-bezier(0.25, 1, 0.5, 1),
+              width 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.6s ease;
   pointer-events: none;
 }
 
-/* Stage: Emerging (Card physically slides upward out of the envelope) */
+/* Stage: Emerging (Card physically slides upward out of the envelope pocket) */
 .invitation-card-unit.emerging {
-  transform: translateY(-46%);
+  transform: translateY(-52%);
   z-index: 20;
 }
 
-/* Stage: Unfolding & Revealed (Card settles into center, pops up and unfolds) */
-.invitation-card-unit.unfolding,
-.invitation-card-unit.revealed {
-  position: fixed;
-  top: 48%;
+/* Stage: Centered (Card centers on screen — full card reveal before unfolding) */
+.invitation-card-unit.centered {
+  position: absolute;
+  top: 50%;
   left: 50%;
   right: auto;
   bottom: auto;
-  width: min(680px, 92vw, calc((100svh - 180px) * 1.42));
-  height: min(478px, calc(min(680px, 92vw) / 1.42), calc(100svh - 180px));
-  aspect-ratio: 1.42 / 1;
   transform: translate(-50%, -50%);
-  z-index: 50;
-  pointer-events: auto;
-  animation: card-pop-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: min(235px, 68vw);
+  height: clamp(255px, 34vh, 295px);
+  z-index: 30;
+  border-radius: 12px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 20px rgba(223, 168, 54, 0.25);
+  pointer-events: none;
 }
 
-@keyframes card-pop-up {
-  0% {
-    transform: translate(-50%, -36%) scale(0.68);
-    opacity: 0.8;
-  }
-  65% {
-    transform: translate(-50%, -50%) scale(1.02);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
+/* Stage: Unfolding & Revealed (Card unfolds into two-page spread in the center) */
+.invitation-card-unit.unfolding,
+.invitation-card-unit.revealed {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: min(92vw, calc((100svh - 180px) * 1.42), 680px);
+  height: min(calc(min(92vw, 680px) / 1.42), calc(100svh - 180px));
+  aspect-ratio: 1.42 / 1;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  pointer-events: auto;
+  box-shadow: 0 28px 75px rgba(0, 0, 0, 0.85);
 }
 
 /* Folded Cover Face (shown before unfolding) */
@@ -824,12 +853,18 @@
     height: clamp(210px, 32vh, 260px);
   }
 
+  .invitation-card-unit.centered {
+    width: min(215px, 66vw);
+    height: clamp(235px, 33vh, 280px);
+    top: 50%;
+  }
+
   .invitation-card-unit.unfolding,
   .invitation-card-unit.revealed {
     width: min(92vw, calc((100svh - 175px) * 1.42), 520px);
     height: min(calc(min(92vw, 520px) / 1.42), calc(100svh - 175px));
     aspect-ratio: 1.42 / 1;
-    top: 47%;
+    top: 50%;
   }
 
   /* CRITICAL: Keep both pages visible side-by-side on all screens */
@@ -923,12 +958,18 @@
     height: 230px;
   }
 
+  .invitation-card-unit.centered {
+    width: min(195px, 68vw);
+    height: clamp(215px, 32vh, 250px);
+    top: 50%;
+  }
+
   .invitation-card-unit.unfolding,
   .invitation-card-unit.revealed {
     width: min(92vw, calc((100svh - 150px) * 1.42), 330px);
     height: min(calc(min(92vw, 330px) / 1.42), calc(100svh - 150px));
     aspect-ratio: 1.42 / 1;
-    top: 47%;
+    top: 50%;
   }
 
   .opening-header-text {
