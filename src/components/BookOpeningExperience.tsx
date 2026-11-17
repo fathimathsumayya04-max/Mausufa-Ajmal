@@ -40,17 +40,17 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
     // Step 2: Flap opened, folded card emerges and slides up
     const timer1 = window.setTimeout(() => {
       setStage('emerging');
-    }, 1300);
+    }, 1000);
 
     // Step 3: Card pops forward and unfolds into two-page spread
     const timer2 = window.setTimeout(() => {
       setStage('unfolding');
-    }, 2800);
+    }, 2100);
 
     // Step 4: Fully revealed with action controls
     const timer3 = window.setTimeout(() => {
       setStage('revealed');
-    }, 4500);
+    }, 3400);
 
     timeoutsRef.current.push(timer1, timer2, timer3);
   }, [stage, clearAllTimeouts]);
