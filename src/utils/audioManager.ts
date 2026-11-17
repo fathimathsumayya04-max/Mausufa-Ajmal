@@ -134,29 +134,34 @@ class WeddingAudioManager {
           this.notify();
 
           const startTime = performance.now();
+          let lastUpdate = 0;
           const step = (now: number) => {
             if (!this.audio || !this.isPlaying) {
               this.fadeAnimationId = null;
               return;
             }
 
-            const elapsed = now - startTime;
-            const progress = Math.min(1, elapsed / durationMs);
-            // Smooth ease curve: avoids sudden jumps
-            const currentVol = startVol + (targetVol - startVol) * progress;
+            // Throttle audio volume updates to ~30Hz (every 33ms) to prevent audio thread saturation on mobile devices
+            if (now - lastUpdate >= 33 || now - startTime >= durationMs) {
+              lastUpdate = now;
+              const elapsed = now - startTime;
+              const progress = Math.min(1, elapsed / durationMs);
+              const currentVol = startVol + (targetVol - startVol) * progress;
 
-            try {
-              this.audio.volume = Math.min(targetVol, Math.max(startVol, currentVol));
-            } catch {}
-
-            if (progress < 1) {
-              this.fadeAnimationId = requestAnimationFrame(step);
-            } else {
               try {
-                this.audio.volume = targetVol;
+                this.audio.volume = Math.min(targetVol, Math.max(startVol, currentVol));
               } catch {}
-              this.fadeAnimationId = null;
+
+              if (progress >= 1) {
+                try {
+                  this.audio.volume = targetVol;
+                } catch {}
+                this.fadeAnimationId = null;
+                return;
+              }
             }
+
+            this.fadeAnimationId = requestAnimationFrame(step);
           };
 
           this.fadeAnimationId = requestAnimationFrame(step);

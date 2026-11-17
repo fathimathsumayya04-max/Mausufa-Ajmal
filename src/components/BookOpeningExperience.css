@@ -152,11 +152,13 @@
   position: relative;
   z-index: 15;
   perspective: 1600px;
+  -webkit-perspective: 1600px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
   width: 100%;
+  transform: translateZ(0);
 }
 
 .invitation-envelope {
@@ -165,9 +167,12 @@
   height: clamp(235px, 36vh, 295px);
   max-height: calc(100svh - 220px);
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   cursor: pointer;
   border-radius: 12px;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, opacity 0.6s ease, filter 0.6s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
 }
 
 .invitation-envelope:not(.is-opened):hover {
@@ -182,24 +187,23 @@
    so the child card unit remains 100% visible throughout all stages */
 .opening-experience.emerging .invitation-envelope,
 .opening-experience.centered .invitation-envelope {
-  transform: translateY(28px);
-  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translate3d(0, 24px, 0);
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .opening-experience.unfolding .invitation-envelope,
 .opening-experience.revealed .invitation-envelope {
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
   pointer-events: none;
-  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Envelope parts soften during centered stage, and cleanly fade out in unfolding & revealed */
+/* Envelope parts soften during centered stage, and cleanly fade out in unfolding & revealed (pure GPU opacity, no CPU blur) */
 .opening-experience.centered .envelope-pocket,
 .opening-experience.centered .envelope-top-flap,
 .opening-experience.centered .envelope-back-wall {
   opacity: 0.28;
-  filter: blur(1px);
-  transition: opacity 0.6s ease, filter 0.6s ease;
+  transition: opacity 0.5s ease;
 }
 
 .opening-experience.unfolding .envelope-pocket,
@@ -209,9 +213,8 @@
 .opening-experience.unfolding .envelope-back-wall,
 .opening-experience.revealed .envelope-back-wall {
   opacity: 0;
-  filter: blur(2px);
   pointer-events: none;
-  transition: opacity 0.5s ease, filter 0.5s ease;
+  transition: opacity 0.45s ease;
 }
 
 /* 1. Envelope Back Wall & Interior Gold Cavity */
@@ -277,12 +280,16 @@
   height: 52%;
   transform-origin: top center;
   transform-style: preserve-3d;
-  transition: transform 0.78s cubic-bezier(0.33, 1, 0.68, 1);
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  transition: transform 0.62s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 8;
 }
 
 .opening-experience:not(.closed) .envelope-top-flap {
-  transform: rotateX(180deg);
+  transform: rotateX(180deg) translateZ(0);
   z-index: 1;
 }
 
@@ -339,12 +346,13 @@
   height: 50px;
   z-index: 10;
   filter: drop-shadow(0 4px 12px rgba(223, 168, 54, 0.45));
-  transition: transform 0.35s ease, opacity 0.4s ease;
+  will-change: transform, opacity;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .opening-experience:not(.closed) .golden-wax-seal {
   opacity: 0;
-  transform: translate(-50%, 50%) scale(1.15);
+  transform: translate(-50%, 50%) scale(1.12);
   pointer-events: none;
 }
 
@@ -401,33 +409,33 @@
 
 .invitation-card-unit {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
   z-index: 3;
-  transform: translateY(0);
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-              width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.45s ease;
+  transform: translate3d(-50%, -50%, 0);
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+              width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease;
   pointer-events: none;
 }
 
 /* Stage: Emerging (Card physically slides upward out of the envelope pocket) */
 .invitation-card-unit.emerging {
-  transform: translateY(-52%);
+  transform: translate3d(-50%, -102%, 0);
   z-index: 20;
 }
 
 /* Stage: Centered (Card centers on screen — full card reveal before unfolding) */
 .invitation-card-unit.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
   width: min(235px, 68vw);
   height: clamp(255px, 34vh, 295px);
   z-index: 30;
@@ -439,15 +447,10 @@
 /* Stage: Unfolding & Revealed (Card unfolds into two-page spread in the center) */
 .invitation-card-unit.unfolding,
 .invitation-card-unit.revealed {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
+  transform: translate3d(-50%, -50%, 0);
   width: min(92vw, calc((100svh - 180px) * 1.42), 680px);
   height: min(calc(min(92vw, 680px) / 1.42), calc(100svh - 180px));
   aspect-ratio: 1.42 / 1;
-  transform: translate(-50%, -50%);
   z-index: 40;
   pointer-events: auto;
   box-shadow: 0 28px 75px rgba(0, 0, 0, 0.85);
@@ -467,7 +470,8 @@
   padding: 1.25rem;
   box-sizing: border-box;
   opacity: 1;
-  transition: opacity 0.35s ease;
+  will-change: opacity;
+  transition: opacity 0.25s ease;
 }
 
 .invitation-card-unit.unfolding .folded-card-cover,
@@ -519,11 +523,14 @@
   inset: 0;
   display: flex;
   perspective: 1600px;
+  -webkit-perspective: 1600px;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   opacity: 0;
   border-radius: 12px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
-  transition: opacity 0.35s ease;
+  will-change: opacity;
+  transition: opacity 0.28s ease;
 }
 
 .invitation-card-unit.unfolding .two-page-booklet,
@@ -550,7 +557,11 @@
   box-shadow: inset -15px 0 35px rgba(0, 0, 0, 0.6);
   transform-origin: right center;
   transform-style: preserve-3d;
-  animation: unfold-left-page 0.78s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  animation: unfold-left-page 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes unfold-left-page {
