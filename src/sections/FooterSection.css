@@ -1,0 +1,125 @@
+.site-footer {
+  padding: clamp(3rem, 6.5vw, 4.75rem) var(--section-pad-x);
+  background-color: var(--color-bg-deepest);
+  border-top: 1px solid rgba(254, 240, 138, 0.15);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(254, 240, 138, 0.45) 50%,
+    transparent 100%
+  );
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.95rem;
+  position: relative;
+  z-index: 2;
+}
+
+.site-footer__divider {
+  margin-bottom: 0.25rem;
+}
+
+/* Couple Names in Elegant Non-Italic Serif Typography (Footer Section Only) */
+.site-footer__couple {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.32em;
+  font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+  font-style: normal;
+  font-size: clamp(2rem, 5.5vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.012em;
+  color: #fff9e6;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fef9e7 25%,
+    #f6d376 55%,
+    #dfa836 85%,
+    #fef9e7 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(223, 168, 54, 0.22));
+  text-align: center;
+  margin: 0 auto;
+}
+
+.site-footer__name {
+  white-space: nowrap;
+}
+
+.site-footer__ampersand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: normal;
+  padding-inline: 0.04em;
+  opacity: 0.95;
+}
+
+.site-footer__meta {
+  font-family: var(--font-title);
+  font-size: clamp(0.72rem, 1.9vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-shimmer);
+  opacity: 0.92;
+}
+
+.site-footer__meta .num-serif {
+  font-family: var(--font-number);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: #fff9e6;
+}
+
+.site-footer__note {
+  max-width: 520px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.3vw, 1.05rem);
+  color: #fef9e7;
+  line-height: 1.7;
+  padding-inline: 0.75rem;
+  opacity: 0.88;
+}
+
+@media (max-width: 600px) {
+  .site-footer__couple {
+    font-size: clamp(1.15rem, 5.2vw, 1.85rem);
+    flex-wrap: nowrap;
+    gap: 0.26em;
+  }
+
+  .site-footer__meta {
+    font-size: clamp(0.68rem, 2.5vw, 0.76rem);
+    line-height: 1.6;
+    letter-spacing: 0.14em;
+  }
+
+  .site-footer__note {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+}

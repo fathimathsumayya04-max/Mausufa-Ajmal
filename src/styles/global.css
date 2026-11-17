@@ -1,0 +1,440 @@
+/* ==========================================================================
+   Global Styles — Radiant Royal Red & Luminous Gold Theme (Lighter Ruby Palette)
+   Mobile-First Luxury Wedding Invitation Experience
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg-deepest);
+  color: var(--color-ink-primary);
+  overflow-x: clip;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-deepest);
+  color: var(--color-ink-primary);
+  line-height: 1.65;
+  overflow-x: clip;
+  min-height: 100vh;
+  position: relative;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-gold-amber);
+  outline-offset: 3px;
+}
+
+/* Scrollbar styling — Luminous Warm Gold on Ruby */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deepest);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 0.45);
+  border-radius: 999px;
+  border: 1px solid rgba(254, 240, 138, 0.35);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(254, 240, 138, 0.75);
+}
+
+/* ==========================================================================
+   Shared Layout & Radiant Royal Surfaces
+   ========================================================================== */
+
+.invitation-shell {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-bg-deepest);
+}
+
+.invitation-main {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-bg-deepest);
+}
+
+.section-shell {
+  position: relative;
+  padding: var(--section-pad-y) var(--section-pad-x);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Calmer, Softer Burgundy Backdrops — Subtle, Balanced Glow */
+.section-shell--white {
+  background: radial-gradient(
+      ellipse 85% 65% at 50% 0%,
+      rgba(159, 18, 57, 0.12) 0%,
+      rgba(223, 168, 54, 0.05) 45%,
+      transparent 75%
+    ),
+    radial-gradient(
+      circle at 85% 90%,
+      rgba(110, 16, 36, 0.14) 0%,
+      transparent 55%
+    ),
+    var(--color-bg-deepest);
+}
+
+.section-shell--soft {
+  background: radial-gradient(
+      ellipse 80% 65% at 50% 50%,
+      rgba(223, 168, 54, 0.06) 0%,
+      rgba(159, 18, 57, 0.11) 48%,
+      transparent 80%
+    ),
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(254, 240, 138, 0.04) 0%,
+      transparent 45%
+    ),
+    var(--color-bg-pure);
+  border-top: 1px solid rgba(254, 240, 138, 0.12);
+  border-bottom: 1px solid rgba(254, 240, 138, 0.12);
+}
+
+.section-shell--teal {
+  background: linear-gradient(
+    160deg,
+    #2c0b12 0%,
+    #42121c 50%,
+    #2a0a11 100%
+  );
+  color: var(--color-ink-primary);
+  border-top: 1px solid rgba(254, 240, 138, 0.12);
+  border-bottom: 1px solid rgba(254, 240, 138, 0.12);
+}
+
+.section-inner {
+  position: relative;
+  z-index: 2;
+  width: min(var(--container-max), 100%);
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   Typography Hierarchy — Luxury Thin Serif & Classic Editorial Invitation
+   ========================================================================== */
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(2rem, 5vw, 3.25rem);
+}
+
+.eyebrow-label {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: clamp(0.7rem, 1.8vw, 0.76rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold-shimmer);
+  margin-bottom: 0.75rem;
+  opacity: 0.92;
+}
+
+.eyebrow-label--light {
+  color: var(--color-gold-bright);
+}
+
+/* Section Headings with Thin Elegant Serif & Refined Gold Foil */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: 0.03em;
+  color: var(--color-gold-bright);
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fef9e7 30%,
+    #f6d376 65%,
+    #e5ad35 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(223, 168, 54, 0.22));
+}
+
+.section-heading--light {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fef9e7 40%,
+    #fde68a 85%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  margin-top: 0.85rem;
+  font-family: var(--font-serif);
+  font-size: clamp(0.96rem, 2.4vw, 1.1rem);
+  color: var(--color-ink-secondary);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle--light {
+  color: var(--color-ink-secondary);
+}
+
+.arabic-text {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+/* ==========================================================================
+   Global Elegant Serif Number Typography — Clear, Legible, Lining Numerals
+   ========================================================================== */
+
+.num-serif,
+.countdown-tile__value,
+.hero-card-date-number,
+.hero-card-date-sub span,
+.hero-card-time,
+.detail-card__value,
+.detail-card__sub,
+.venue-card__meta-pill,
+.verse-card__reference,
+.site-footer__meta,
+.section-subtitle {
+  font-family: var(--font-number);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+}
+
+/* ==========================================================================
+   Royal Buttons (Solid Gold & Velvet Outline) — Mobile Thumb Optimized
+   ========================================================================== */
+
+.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 2.2rem;
+  min-height: 48px; /* Touch target accessibility */
+  border-radius: var(--radius-pill);
+  border: 1px solid #fffbeb;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fef08a 35%,
+    #fbbf24 70%,
+    #d97706 100%
+  );
+  color: #4e0f1f;
+  font-size: clamp(0.8rem, 2.2vw, 0.86rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.45), 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.28s var(--ease-elegant), filter 0.28s ease,
+    box-shadow 0.28s ease;
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.btn-teal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+}
+
+.btn-teal:hover,
+.btn-teal:active {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 30px rgba(251, 191, 36, 0.6), 0 0 18px rgba(254, 240, 138, 0.5);
+}
+
+.btn-teal:hover::before {
+  left: 140%;
+}
+
+.btn-teal-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.92rem 2.15rem;
+  min-height: 48px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-strong);
+  background-color: rgba(92, 18, 37, 0.82);
+  color: var(--color-ivory-bright);
+  font-size: clamp(0.78rem, 2.2vw, 0.84rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 18px rgba(45, 8, 17, 0.35);
+  transition: transform 0.25s var(--ease-elegant), background-color 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease;
+  touch-action: manipulation;
+}
+
+.btn-teal-outline:hover,
+.btn-teal-outline:active {
+  background-color: rgba(251, 191, 36, 0.22);
+  border-color: #fef08a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(45, 8, 17, 0.5), 0 0 20px rgba(251, 191, 36, 0.35);
+}
+
+/* ==========================================================================
+   Shared Luxury Velvet & Thin Gold Line Card Surface
+   ========================================================================== */
+
+.ref-card {
+  position: relative;
+  background: linear-gradient(
+    165deg,
+    rgba(62, 17, 26, 0.92) 0%,
+    rgba(44, 11, 18, 0.96) 100%
+  );
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(14px);
+  transition: transform 0.35s var(--ease-elegant), box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  overflow: hidden;
+}
+
+.ref-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(254, 240, 138, 0.45) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.ref-card:hover {
+  border-color: var(--color-border-medium);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Luxury Subtle Animations & Keyframes
+   ========================================================================== */
+
+@keyframes pulse-scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 0.95;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Luxury Wedding Invitation Number Typography
+   Applies globally to all numbers across all pages and sections:
+   Lining numerals, uniform cap-height, elegant high-contrast serif styling.
+   ========================================================================== */
+
+.num-serif {
+  font-family: var(--font-number) !important;
+  font-variant-numeric: lining-nums tabular-nums !important;
+  font-feature-settings: 'lnum' 1, 'tnum' 1 !important;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.section-subtitle .num-serif,
+.venue-card__meta-pill .num-serif,
+.site-footer__meta .num-serif,
+.verse-card__reference .num-serif {
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}

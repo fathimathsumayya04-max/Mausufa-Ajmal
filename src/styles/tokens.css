@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Mausufa Shirin & Ajmal — Exact Deep Burgundy & Gold Leaf Design Tokens
+   Matched exactly to the reference studio photographs (#491a20 burgundy)
+   ========================================================================== */
+
+:root {
+  /* Elegant Deep Burgundy Palette — Calmer, Softer, Less Glowing */
+  --color-bg-deepest: #2a0b12;
+  --color-bg-pure: #380f17;
+  --color-bg-soft: #42131d;
+  --color-bg-tint: #4d1823;
+  --color-surface-card: #3f131c;
+  --color-surface-card-elevated: #4b1722;
+  --color-surface-input: rgba(42, 11, 18, 0.92);
+  --color-surface-glass: rgba(56, 15, 23, 0.94);
+
+  /* Rich Wine & Ruby Tones — Subtle & Balanced */
+  --color-red-deep: #380f17;
+  --color-red-primary: #6d1a29;
+  --color-red-ruby: #9f1239;
+  --color-red-rose: #be123c;
+  --color-red-glow: rgba(159, 18, 57, 0.16);
+
+  /* Gold-Leaf & Metallic Palette — Soft Luxury Card Foil */
+  --color-gold-bright: #fffdf5;
+  --color-gold-shimmer: #fef3c7;
+  --color-gold-primary: #dfa836;
+  --color-gold-metallic: #c88a22;
+  --color-gold-rich: #b37415;
+  --color-gold-deep: #8f530d;
+  --color-gold-amber: #fde68a;
+  --color-gold-glow: rgba(223, 168, 54, 0.18);
+  --color-gold-glow-strong: rgba(254, 240, 138, 0.28);
+
+  /* Cream-Colored Card Insert Palette */
+  --color-cream-card: #faf6ec;
+  --color-cream-border: #d4af37;
+  --color-cream-ink: #3f131a;
+
+  /* Backward Compatibility Aliases */
+  --color-teal-deep: #380f17;
+  --color-teal-primary: #dfa836;
+  --color-teal-accent: #fde68a;
+  --color-teal-mist: #fffdf5;
+  --color-teal-glow: rgba(223, 168, 54, 0.18);
+
+  /* Typography Ink Hierarchy */
+  --color-ink-primary: #ffffff;
+  --color-ink-secondary: #fef3c7;
+  --color-ink-muted: #f5deb3;
+  --color-ink-on-gold: #2a0b12;
+  --color-ink-on-ivory: #2a0b12;
+
+  /* Gold Foil Borders */
+  --color-border-subtle: rgba(254, 240, 138, 0.16);
+  --color-border-medium: rgba(223, 168, 54, 0.32);
+  --color-border-strong: rgba(254, 240, 138, 0.55);
+
+  /* Status Colors */
+  --color-success: #86efac;
+  --color-error: #fca5a5;
+
+  /* Luxury Wedding Invitation Typography Hierarchy — Clear, Elegant Serif Numerals */
+  --font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-title: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-number: 'Bodoni Moda', 'Playfair Display', 'Cinzel', Georgia, serif;
+  --font-couple: 'Pinyon Script', 'Alex Brush', 'Great Vibes', cursive;
+  --font-script: 'Pinyon Script', 'Alex Brush', 'Great Vibes', cursive;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Cormorant Garamond', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-arabic: 'Amiri Quran', 'Scheherazade New', 'Amiri', 'Traditional Arabic', serif;
+  --font-arabic-calligraphy: 'Amiri Quran', 'Scheherazade New', 'Aref Ruqaa', 'Amiri', serif;
+
+  /* Mobile-Optimized Layout Metrics */
+  --container-max: 1040px;
+  --section-pad-y: clamp(3.25rem, 6.5vw, 5.5rem);
+  --section-pad-x: clamp(1rem, 4.5vw, 2.25rem);
+  --radius-card: 20px;
+  --radius-tile: 16px;
+  --radius-pill: 9999px;
+
+  /* Elevation — Softer, Calmer, More Subtle */
+  --shadow-card: 0 14px 36px rgba(18, 3, 7, 0.5), 0 0 1px rgba(254, 240, 138, 0.18);
+  --shadow-card-hover: 0 18px 44px rgba(18, 3, 7, 0.6), 0 0 18px rgba(223, 168, 54, 0.2);
+  --shadow-button: 0 6px 20px rgba(223, 168, 54, 0.28);
+  --shadow-gold-glow: 0 0 20px rgba(223, 168, 54, 0.22);
+
+  /* Motion */
+  --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+}

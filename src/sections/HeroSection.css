@@ -1,0 +1,402 @@
+/* ==========================================================================
+   Hero Section — Luxury Printed Wedding Invitation Card Presentation
+   Inspired faithfully by Reference Image 2 (Luxury Matte Dark Card with Gold Foil)
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  padding: clamp(4.5rem, 10vw, 6.5rem) var(--section-pad-x) clamp(2.5rem, 6vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Calmer, deeper burgundy gradient — rich atmosphere without harsh glow */
+  background: linear-gradient(180deg, #2b0b12 0%, #3a0f18 50%, #280910 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Subtle, soft ambient glow — gently lifts the card without overpowering brightness */
+.hero-radial-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 75% 60% at 50% 42%,
+      rgba(159, 18, 57, 0.12) 0%,
+      rgba(223, 168, 54, 0.06) 45%,
+      transparent 75%);
+}
+
+/* ==========================================================================
+   Luxury Invitation Card Container (Card on Velvet Experience)
+   ========================================================================== */
+
+.hero-invitation-card {
+  position: relative;
+  z-index: 2;
+  width: min(680px, 100%);
+  margin: 0 auto;
+  padding: clamp(2.4rem, 6vw, 3.8rem) clamp(1.4rem, 5vw, 3rem);
+  background: linear-gradient(170deg,
+      rgba(54, 15, 23, 0.94) 0%,
+      rgba(38, 10, 16, 0.98) 100%);
+  border: 1px solid rgba(254, 240, 138, 0.24);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 60px rgba(12, 2, 5, 0.65);
+  backdrop-filter: blur(16px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Subtle inner border accent to give a luxury bevel/emboss printed card feel */
+.hero-invitation-card::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(254, 240, 138, 0.08);
+  border-radius: calc(var(--radius-card) - 6px);
+  pointer-events: none;
+}
+
+/* Traditional Arabic Bismillah Calligraphy — Authentic Gold Foil Reference */
+.hero-card-bismillah-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: clamp(1.1rem, 2.8vw, 1.6rem);
+  overflow: visible;
+}
+
+.hero-card-bismillah-img {
+  width: min(500px, 92%);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(223, 168, 54, 0.35)) drop-shadow(0 0 1px rgba(254, 240, 138, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.hero-card-bismillah-img:hover {
+  transform: scale(1.02);
+}
+
+.hero-card-bismillah {
+  font-family: var(--font-arabic-calligraphy, 'Amiri Quran', 'Scheherazade New', 'Amiri', serif);
+  font-size: clamp(1.65rem, 4.8vw, 2.45rem);
+  font-weight: 400;
+  line-height: 2.2;
+  direction: rtl;
+  color: #fffdf5;
+  background: linear-gradient(135deg,
+      #ffffff 0%,
+      #fef7d6 28%,
+      #f6dc92 60%,
+      #dfa836 88%,
+      #fff8db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(223, 168, 54, 0.28));
+  margin-bottom: clamp(1rem, 2.5vw, 1.4rem);
+  padding: 0.25em 0.5em 0.35em;
+  overflow: visible;
+  text-align: center;
+  word-spacing: 0.15em;
+}
+
+/* Eyebrow Label */
+.hero-card-eyebrow {
+  font-family: var(--font-title);
+  font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #fce7b0;
+  margin-bottom: clamp(1.15rem, 3vw, 1.75rem);
+  opacity: 0.92;
+}
+
+/* Bride & Groom Names — Sophisticated Cursive Script (Zero Clipping, Full Descender Clearance) */
+.hero-card-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: clamp(1.25rem, 3.2vw, 1.85rem);
+  width: 100%;
+  overflow: visible !important;
+}
+
+.hero-card-name {
+  font-family: var(--font-couple);
+  font-style: normal;
+  font-size: clamp(2.65rem, 8.5vw, 4.6rem);
+  font-weight: 400;
+  line-height: 1.52;
+  /* Generous line-height ensures tall loops and long descenders are never clipped */
+  letter-spacing: 0.02em;
+  display: inline-block;
+  padding: 0.2em 0.8em 0.5em;
+  /* Crucial: generous vertical and horizontal padding ensures letters 'j', 'f', 'S' are 100% visible */
+  overflow: visible !important;
+  color: #fff9e6;
+  background: linear-gradient(135deg,
+      #ffffff 0%,
+      #fef9e7 25%,
+      #f6d376 55%,
+      #dfa836 85%,
+      #fef9e7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(223, 168, 54, 0.22));
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.hero-card-ampersand {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 3.6vw, 1.85rem);
+  font-weight: 300;
+  color: #fde68a;
+  line-height: 1.2;
+  padding: 0.1em 0;
+  margin: 0.1rem 0;
+  opacity: 0.88;
+  overflow: visible;
+}
+
+/* Invitation Phrasing */
+.hero-card-invitation {
+  font-family: var(--font-title);
+  font-size: clamp(0.68rem, 1.7vw, 0.76rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #f5deb3;
+  line-height: 1.8;
+  margin-bottom: clamp(1.4rem, 3.5vw, 2rem);
+  opacity: 0.9;
+}
+
+.hero-card-invitation p {
+  margin: 0.15rem 0;
+}
+
+/* Signature Date Block — Thin Rules flanking the Date */
+.hero-card-date-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: clamp(1.4rem, 3.5vw, 2rem);
+  width: 100%;
+}
+
+.hero-card-day {
+  font-family: var(--font-title);
+  font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #fef3c7;
+  opacity: 0.92;
+}
+
+.hero-card-date-divider-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+  width: min(320px, 90%);
+  margin: 0.1rem auto;
+}
+
+.hero-card-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(254, 240, 138, 0.6),
+      transparent);
+}
+
+/* Clean, Distinct, Highly Legible Date Number "03" — Luxury Serif Typography */
+.hero-card-date-number {
+  font-family: var(--font-number);
+  font-size: clamp(2.5rem, 6.8vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+  color: #fffdf5;
+  background: linear-gradient(135deg,
+      #ffffff 0%,
+      #fef3c7 40%,
+      #fde68a 85%,
+      #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(223, 168, 54, 0.28));
+  display: inline-block;
+  padding-inline: 0.25rem;
+  padding-bottom: 0.08em;
+  overflow: visible;
+  vertical-align: middle;
+}
+
+.hero-card-date-sub {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1.25rem;
+  font-family: var(--font-title);
+  font-size: clamp(0.7rem, 1.7vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #fce7b0;
+  opacity: 0.92;
+}
+
+.hero-card-year {
+  font-family: var(--font-number);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: #fff9e6;
+}
+
+/* Event Details & Schedule */
+.hero-card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-title);
+  font-size: clamp(0.68rem, 1.7vw, 0.76rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fef3c7;
+  line-height: 1.65;
+  opacity: 0.9;
+}
+
+.hero-card-time {
+  letter-spacing: 0.22em;
+  color: #fef3c7;
+}
+
+.hero-card-time-num {
+  font-family: var(--font-number);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: #fffdf5;
+}
+
+.hero-card-venue {
+  color: #f5deb3;
+}
+
+.hero-card-country {
+  color: #f5deb3;
+}
+
+.hero-card-reception {
+  margin-top: 0.65rem;
+  color: #fef08a;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+  font-size: clamp(0.7rem, 1.7vw, 0.78rem);
+}
+
+/* CTA & Scroll Controls */
+.hero-cta-wrap {
+  position: relative;
+  z-index: 2;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-cta-btn {
+  padding: 0.85rem 2.2rem;
+  font-family: var(--font-title);
+  font-size: clamp(0.76rem, 2vw, 0.82rem);
+  letter-spacing: 0.18em;
+  gap: 0.5rem;
+}
+
+.hero-scroll-cue {
+  position: relative;
+  z-index: 2;
+  margin-top: 0.85rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-title);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-gold-shimmer);
+  animation: pulse-scroll-cue 4.5s ease-in-out infinite;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Mobile Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 480px) {
+  .hero-invitation-card {
+    padding: 2rem 1.15rem;
+    border-radius: 16px;
+  }
+
+  .hero-invitation-card::after {
+    inset: 5px;
+    border-radius: 11px;
+  }
+
+  .hero-card-bismillah {
+    font-size: clamp(1.45rem, 5.5vw, 1.95rem);
+    line-height: 2;
+    padding: 0.2em 0.25em 0.3em;
+  }
+
+  .hero-card-name {
+    font-size: clamp(2.2rem, 9vw, 2.95rem);
+    line-height: 1.4;
+    padding: 0.15em 0.25em 0.38em;
+  }
+
+  .hero-card-date-divider-row {
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-invitation-card {
+    padding: 1.6rem 0.85rem;
+    border-radius: 14px;
+  }
+
+  .hero-card-name {
+    font-size: 2rem;
+    padding: 0.1em 0.2em 0.3em;
+  }
+
+  .hero-card-date-number {
+    font-size: 2.2rem;
+  }
+}

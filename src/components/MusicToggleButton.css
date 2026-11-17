@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Luxury Minimalist Floating Sound / Volume Button
+   Burgundy & Champagne-Gold Theme (Pure Icon Only, No Text)
+   ========================================================================== */
+
+.floating-music-btn-wrap {
+  position: fixed;
+  bottom: clamp(20px, 4.5vw, 32px);
+  right: clamp(16px, 4vw, 28px);
+  z-index: 99999;
+  pointer-events: auto;
+}
+
+.music-circle-btn {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(254, 240, 138, 0.7);
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(125, 24, 50, 0.98) 0%,
+    rgba(72, 13, 28, 0.98) 70%,
+    rgba(38, 6, 14, 1) 100%
+  );
+  box-shadow:
+    0 6px 20px rgba(18, 2, 6, 0.65),
+    0 0 12px rgba(223, 168, 54, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  color: #fffdf5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  padding: 0;
+}
+
+.music-circle-btn:hover {
+  transform: scale(1.08);
+  border-color: #ffffff;
+  box-shadow:
+    0 8px 24px rgba(18, 2, 6, 0.8),
+    0 0 18px rgba(254, 240, 138, 0.55);
+}
+
+.music-circle-btn:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================================================
+   Playing State: Speaker with Sound Waves + Golden Pulse Ring
+   ========================================================================== */
+
+.music-circle-btn.is-playing {
+  border-color: rgba(254, 240, 138, 0.9);
+  color: #fffdf5;
+}
+
+.music-circle-btn.is-playing::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px solid rgba(254, 240, 138, 0.45);
+  animation: sound-pulse-ring 2.6s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes sound-pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(1.36);
+    opacity: 0;
+  }
+}
+
+.sound-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  filter: drop-shadow(0 1px 3px rgba(223, 168, 54, 0.45));
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.music-circle-btn.is-playing .sound-icon {
+  color: #fffdf5;
+}
+
+/* ==========================================================================
+   Paused State: Muted Speaker Icon + Dimmed Border
+   ========================================================================== */
+
+.music-circle-btn.is-paused {
+  border-color: rgba(254, 240, 138, 0.35);
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(68, 12, 26, 0.92) 0%,
+    rgba(35, 6, 14, 0.96) 100%
+  );
+  box-shadow: 0 4px 14px rgba(18, 2, 6, 0.45);
+  opacity: 0.72;
+}
+
+.music-circle-btn.is-paused .sound-icon {
+  color: #e5cb9f;
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .music-circle-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .sound-icon {
+    width: 19px;
+    height: 19px;
+  }
+}
