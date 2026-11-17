@@ -18,7 +18,7 @@ export function FooterSection() {
         {/* Both Names in Sophisticated Serif Typography */}
         <h2 className="site-footer__couple">
           <span className="site-footer__name">{weddingConfig.couple.brideName}</span>
-          <span className="site-footer__ampersand" aria-hidden="true">&amp;</span>
+          <span className="site-footer__ampersand">&amp;</span>
           <span className="site-footer__name">{weddingConfig.couple.groomName}</span>
         </h2>
 
