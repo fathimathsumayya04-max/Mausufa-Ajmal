@@ -32,7 +32,7 @@
 
 .opening-experience.is-exiting {
   opacity: 0;
-  transform: translateY(-30px);
+  transform: scale(0.99);
   pointer-events: none;
 }
 

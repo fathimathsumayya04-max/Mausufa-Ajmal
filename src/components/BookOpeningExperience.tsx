@@ -14,6 +14,7 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
   const [stage, setStage] = useState<Stage>('closed');
   const [isExiting, setIsExiting] = useState(false);
   const timeoutsRef = useRef<number[]>([]);
+  const hasTriggeredExitRef = useRef(false);
 
   const clearAllTimeouts = useCallback(() => {
     timeoutsRef.current.forEach((id) => window.clearTimeout(id));
@@ -31,6 +32,8 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
   const startOpening = useCallback(() => {
     if (stage !== 'closed') return;
     clearAllTimeouts();
+    hasTriggeredExitRef.current = false;
+    setIsExiting(false);
 
     // Start playing the uploaded wedding Nasheed smoothly strictly on direct user click!
     weddingAudio.startFromTapToOpen();
@@ -72,21 +75,45 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
   // Replay the complete experience from the beginning
   const handleReplay = (e: React.MouseEvent) => {
     e.stopPropagation();
+    hasTriggeredExitRef.current = false;
     clearAllTimeouts();
+    setIsExiting(false);
     setStage('closed');
   };
 
-  // Enter the main wedding invitation website
-  const handleEnterWebsite = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  // Enter the main wedding invitation website (supports both automatic timer and user click)
+  const handleEnterWebsite = useCallback((e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (hasTriggeredExitRef.current) return;
+    hasTriggeredExitRef.current = true;
+
     clearAllTimeouts();
     setIsExiting(true);
+
+    // Ensure the main invitation is scrolled to the absolute top
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Smooth fade exit matches CSS 0.75s opacity transition
     const exitTimer = window.setTimeout(() => {
       onEnter();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }, 750);
     timeoutsRef.current.push(exitTimer);
-  };
+  }, [clearAllTimeouts, onEnter]);
+
+  // AUTOMATIC TRANSITION: Keep fully opened book visible for exactly 2 seconds, then transition
+  useEffect(() => {
+    if (stage === 'revealed' && !isExiting && !hasTriggeredExitRef.current) {
+      const autoEnterTimer = window.setTimeout(() => {
+        handleEnterWebsite();
+      }, 2000);
+      timeoutsRef.current.push(autoEnterTimer);
+
+      return () => {
+        window.clearTimeout(autoEnterTimer);
+      };
+    }
+  }, [stage, isExiting, handleEnterWebsite]);
 
   return (
     <div
