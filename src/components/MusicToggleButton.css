@@ -13,10 +13,10 @@
 
 .music-circle-btn {
   position: relative;
-  width: 46px;
-  height: 46px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1.5px solid rgba(254, 240, 138, 0.7);
+  border: 1.25px solid rgba(254, 240, 138, 0.7);
   background: radial-gradient(
     circle at 35% 35%,
     rgba(125, 24, 50, 0.98) 0%,
@@ -24,8 +24,8 @@
     rgba(38, 6, 14, 1) 100%
   );
   box-shadow:
-    0 6px 20px rgba(18, 2, 6, 0.65),
-    0 0 12px rgba(223, 168, 54, 0.25),
+    0 4px 14px rgba(18, 2, 6, 0.55),
+    0 0 10px rgba(223, 168, 54, 0.2),
     inset 0 1px 2px rgba(255, 255, 255, 0.35);
   color: #fffdf5;
   display: flex;
@@ -63,7 +63,7 @@
 .music-circle-btn.is-playing::before {
   content: '';
   position: absolute;
-  inset: -5px;
+  inset: -4px;
   border-radius: 50%;
   border: 1px solid rgba(254, 240, 138, 0.45);
   animation: sound-pulse-ring 2.6s infinite ease-out;
@@ -76,20 +76,20 @@
     opacity: 0.85;
   }
   50% {
-    transform: scale(1.22);
+    transform: scale(1.2);
     opacity: 0.25;
   }
   100% {
-    transform: scale(1.36);
+    transform: scale(1.32);
     opacity: 0;
   }
 }
 
 .sound-icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   display: block;
-  filter: drop-shadow(0 1px 3px rgba(223, 168, 54, 0.45));
+  filter: drop-shadow(0 1px 2px rgba(223, 168, 54, 0.4));
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -119,11 +119,11 @@
 
 @media (max-width: 480px) {
   .music-circle-btn {
-    width: 44px;
-    height: 44px;
+    width: 35px;
+    height: 35px;
   }
   .sound-icon {
-    width: 19px;
-    height: 19px;
+    width: 15px;
+    height: 15px;
   }
 }

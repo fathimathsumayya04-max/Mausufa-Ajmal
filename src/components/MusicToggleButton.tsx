@@ -32,9 +32,9 @@ export function MusicToggleButton({ className = '' }: MusicToggleButtonProps) {
         title={isPlaying ? 'Mute Sound' : 'Play Sound'}
       >
         {isPlaying ? (
-          <Volume2 className="sound-icon" size={20} strokeWidth={2} aria-hidden="true" />
+          <Volume2 className="sound-icon" size={16} strokeWidth={2} aria-hidden="true" />
         ) : (
-          <VolumeX className="sound-icon" size={20} strokeWidth={2} aria-hidden="true" />
+          <VolumeX className="sound-icon" size={16} strokeWidth={2} aria-hidden="true" />
         )}
       </button>
     </div>
