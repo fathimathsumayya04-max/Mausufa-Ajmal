@@ -36,7 +36,7 @@ class WeddingAudioManager {
   private getAudioInstance(): HTMLAudioElement {
     if (!this.audio) {
       this.audio = new Audio();
-      this.audio.preload = 'auto';
+      this.audio.preload = 'none';
       this.audio.loop = true;
 
       // 100% compliant MP3 extracted via FFmpeg from uploaded video

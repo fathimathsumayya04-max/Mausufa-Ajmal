@@ -222,7 +222,7 @@
   position: absolute;
   inset: 0;
   background: #f5eedc;
-  background-image: url('/images/opening/luxury-paper-texture.png');
+  background-image: url('/images/opening/luxury-paper-texture.webp');
   background-repeat: repeat;
   background-size: 180px 180px;
   border-radius: 14px;
@@ -263,7 +263,7 @@
   opacity: 0.55;
   background-image:
     radial-gradient(ellipse at 50% 60%, rgba(255, 255, 255, 0.25) 0%, transparent 70%),
-    url('/images/opening/luxury-paper-texture.png');
+    url('/images/opening/luxury-paper-texture.webp');
   background-repeat: no-repeat, repeat;
   background-size: 100% 100%, 180px 180px;
   mix-blend-mode: multiply;
@@ -325,7 +325,7 @@
   opacity: 0.55;
   background-image:
     radial-gradient(ellipse at 50% 25%, rgba(255, 255, 255, 0.3) 0%, transparent 65%),
-    url('/images/opening/luxury-paper-texture.png');
+    url('/images/opening/luxury-paper-texture.webp');
   background-repeat: no-repeat, repeat;
   background-size: 100% 100%, 180px 180px;
   mix-blend-mode: multiply;

@@ -202,12 +202,16 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
                   role="article"
                   aria-label="Islamic Floral Wedding Invitation: Bismillah; Surah Ar-Rum 30:21; Ajmal & Mausufa Shirin; 03 December 2026, India; Prophetic Wedding Supplication"
                 >
-                  <img
-                    src="/images/opening/islamic-floral-invitation-page.png"
-                    alt="Traditional Islamic Floral Wedding Invitation for Mausufa Shirin & Ajmal"
-                    className="page-right-art-img"
-                    loading="eager"
-                  />
+                  <picture>
+                    <source type="image/webp" srcSet="/images/opening/islamic-floral-invitation-page.webp" />
+                    <img
+                      src="/images/opening/islamic-floral-invitation-page.png"
+                      alt="Traditional Islamic Floral Wedding Invitation for Mausufa Shirin & Ajmal"
+                      className="page-right-art-img"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </picture>
                   <div className="page-right-art-overlay" aria-hidden="true" />
                 </div>
               </div>
@@ -250,7 +254,7 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
 
                 {/* Seamless Luxury Handmade Paper Texture Pattern */}
                 <pattern id="pocketPaperTexture" width="180" height="180" patternUnits="userSpaceOnUse">
-                  <image href="/images/opening/luxury-paper-texture.png" width="180" height="180" preserveAspectRatio="none" />
+                  <image href="/images/opening/luxury-paper-texture.webp" width="180" height="180" preserveAspectRatio="none" />
                 </pattern>
               </defs>
               {/* Left and Right Triangular Folds (Base Folds + Visible Luxury Paper Texture) */}
@@ -301,7 +305,7 @@ export const BookOpeningExperience: React.FC<BookOpeningExperienceProps> = ({ on
 
                   {/* Seamless Luxury Handmade Paper Texture Pattern for Flap */}
                   <pattern id="flapPaperTexture" width="180" height="180" patternUnits="userSpaceOnUse">
-                    <image href="/images/opening/luxury-paper-texture.png" width="180" height="180" preserveAspectRatio="none" />
+                    <image href="/images/opening/luxury-paper-texture.webp" width="180" height="180" preserveAspectRatio="none" />
                   </pattern>
                 </defs>
                 <polygon
